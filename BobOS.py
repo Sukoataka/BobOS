@@ -352,6 +352,7 @@ def login():
             with open(loginFile, "w") as f:
                 f.write(f"{regUsernameBase}{regPwBase}")
 
+            print("\n\n")
             print(f"Je username is nu {regUsername} en je wachtwoord is nu {regPw}.\n")
             t.sleep(3)
             now = datetime.now()
