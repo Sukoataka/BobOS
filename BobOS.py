@@ -6,6 +6,7 @@ from datetime import *
 import webbrowser
 from bobPwGenerator import passwordGen
 from bobCalc import *
+from bss import *
 
 OSversion = ""
 with open("updated.txt", "r") as f:
@@ -17,8 +18,9 @@ OSpath = os.path.abspath(__file__)
 loginFile = "usernamePwEncrypted.key"
 
 
-nee = ["nee", "neen", "NEE", "NEEN" , "n", "N", "Nee", "Neen", "No", "no", "NO"]
-ja = ["ja", "jaa", "JA", "JAA", "jep", "jup", "y", "Y", "j", "Ja", "Jup", "Jep", "yes", "YES", "yess", "Yess", "YESS", "Yes", "J"]
+nee = ["nee", "neen", "NEE", "NEEN", "n", "N", "Nee", "Neen", "No", "no", "NO"]
+ja = ["ja", "jaa", "JA", "JAA", "jep", "jup", "y", "Y", "j", "Ja",
+      "Jup", "Jep", "yes", "YES", "yess", "Yess", "YESS", "Yes", "J"]
 
 
 def osIdle():
@@ -32,16 +34,26 @@ def osIdle():
         for i in range(20):
             print("\n")
 
-        afsluiten = ["Sluit af", "afsluiten", "Exit", "exit", "EXIT", "Aflsuiten", "AFSLUITEN","sluit af", "SLUIT AF"]
-        helpCommand = ["help", "Help", "HELP", "?", "?h", "?help", "?Help", "?HELP"]
-        time = ["time", "Time", "TIME", "Hoe laat", "hoelaat", "Tijd", "tijd", "TIJD"]
+        afsluiten = ["Sluit af", "afsluiten", "Exit", "exit",
+                     "EXIT", "Aflsuiten", "AFSLUITEN", "sluit af", "SLUIT AF"]
+        helpCommand = ["help", "Help", "HELP",
+                       "?", "?h", "?help", "?Help", "?HELP"]
+        time = ["time", "Time", "TIME", "Hoe laat",
+                "hoelaat", "Tijd", "tijd", "TIJD"]
         restart = ["restart", "Restart"]
-        changeUserInfo = ["changeUserInfo", "changeuserinfo", "ChangeUserInfo", "CHANGEUSERINFO", "Verandergegevens", "verandergegevens", "VeranderGegevens", "veranderGegevens", "VERANDERGEGEVENS"]
-        generatePassword = ["generatepassword", "GeneratePassword", "GENERATEPASSWORD", "Maakwachtwoord", "maakwachtwoord", "MAAKWACHTWOORD", "genpw", "Genpw", "GenPw", "GenPW", "pwgen", "Pwgen", "PWgen", "PWGEN"]
-        website = ["Website", "website", "WEBSITE", "openwebsite", "OpenWebsite", "Openwebsite", "openWebsite", "OPENWEBSITE", "Openurl", "openurl", "OpenUrl", "OPENURL"]
-        calculate = ["Calculate", "Calc", "calculate", "calc", "CALCULATE", "CALC", "rekenmachine", "Rekenmachine", "REKENMACHINE", "Bereken", "bereken", "BEREKEN", "reken", "Reken", "REKEN"]
-        commands = [" Exit\n","Help\n", "Restart\n", "Tijd\n", "Verandergegevens\n", "Maakwachtwoord\n", "Openurl\n", "Update\n", "Calc"]
+        changeUserInfo = ["changeUserInfo", "changeuserinfo", "ChangeUserInfo", "CHANGEUSERINFO",
+                          "Verandergegevens", "verandergegevens", "VeranderGegevens", "veranderGegevens", "VERANDERGEGEVENS"]
+        generatePassword = ["generatepassword", "GeneratePassword", "GENERATEPASSWORD", "Maakwachtwoord",
+                            "maakwachtwoord", "MAAKWACHTWOORD", "genpw", "Genpw", "GenPw", "GenPW", "pwgen", "Pwgen", "PWgen", "PWGEN"]
+        website = ["Website", "website", "WEBSITE", "openwebsite", "OpenWebsite", "Openwebsite",
+                   "openWebsite", "OPENWEBSITE", "Openurl", "openurl", "OpenUrl", "OPENURL"]
+        calculate = ["Calculate", "Calc", "calculate", "calc", "CALCULATE", "CALC", "rekenmachine",
+                     "Rekenmachine", "REKENMACHINE", "Bereken", "bereken", "BEREKEN", "reken", "Reken", "REKEN"]
+        commands = [" Exit\n", "Help\n", "Restart\n", "Tijd\n",
+                    "Verandergegevens\n", "Maakwachtwoord\n", "Openurl\n", "Update\n", "Calc"]
         update = ["Update", "UPDATE", "update"]
+
+        bss = ["bss", "BSS", "bladsteenschaar"]
 
         def OS_help():
             for i in range(20):
@@ -69,14 +81,15 @@ def osIdle():
                         current_time = now.strftime("%H:%M:%S")
                         for i in range(20):
                             print("\n")
-                        print(f"Even geduld, we sluiten {OSname} af...\nVersie: {OSversion}\nTijd: {current_time}")
+                        print(
+                            f"Even geduld, we sluiten {OSname} af...\nVersie: {OSversion}\nTijd: {current_time}")
                         for i in range(3):
                             print("\n")
                         t.sleep(3.25)
                         exit_loop = False
                         BobOS_on = False
                         exit_sure = False
-                        
+
                     elif exit_sure in nee:
                         for i in range(20):
                             print("\n")
@@ -112,16 +125,30 @@ def osIdle():
                     print("\n")
                 t.sleep(1.25)
 
+            elif command in bss:
+                for i in range(20):
+                    print("\n")
+                print("Het spel start op...")
+                for i in range(2):
+                    print("\n")
+                    t.sleep(2)
+                bssMain()
+                t.sleep(2)
+                for i in range(20):
+                    print("\n")
+
             elif command in restart:
                 restart_loop = True
                 while restart_loop:
-                    restart_sure = input("Ben je zeker dat je wilt restarten?: ")
+                    restart_sure = input(
+                        "Ben je zeker dat je wilt restarten?: ")
                     if restart_sure in ja:
                         now = datetime.now()
                         current_time = now.strftime("%H:%M:%S")
                         for i in range(20):
                             print("\n")
-                        print(f"Even geduld, we starten {OSname} opnieuw op\nVersie: {OSversion}\nTijd: {current_time}")
+                        print(
+                            f"Even geduld, we starten {OSname} opnieuw op\nVersie: {OSversion}\nTijd: {current_time}")
                         for i in range(2):
                             print("\n")
                         t.sleep(3.25)
@@ -150,20 +177,23 @@ def osIdle():
                 regNewUsername = input("Oke, kies een username: ")
                 regNewUsernameBytes = regNewUsername.encode("ascii")
                 regNewUsernameBase = base64.b64encode(regNewUsernameBytes)
-                regNewPw = input(f"Oke, je nieuwe username is nu {regNewUsername}. Wat wil je als wachtwoord? (Als je hetzelfde wilt als je hebt, typ dan hier je wachtwoord dat je al hebt!): ")
+                regNewPw = input(
+                    f"Oke, je nieuwe username is nu {regNewUsername}. Wat wil je als wachtwoord? (Als je hetzelfde wilt als je hebt, typ dan hier je wachtwoord dat je al hebt!): ")
                 regNewPwBytes = regNewPw.encode("ascii")
                 regNewPwBase = base64.b64encode(regNewPwBytes)
 
                 with open(loginFile, "w") as f:
                     f.write(f"{regNewUsernameBase}{regNewPwBase}")
 
-                print(f"Je username is nu {regNewUsername} en je wachtwoord is nu {regNewPw}.\n")
+                print(
+                    f"Je username is nu {regNewUsername} en je wachtwoord is nu {regNewPw}.\n")
                 t.sleep(3)
                 now = datetime.now()
                 current_time = now.strftime("%H:%M:%S")
                 for i in range(20):
                     print("\n")
-                print(f"Even geduld, we starten {OSname} opnieuw op om de gegevens op te slaan!\nVersie: {OSversion}\nTijd: {current_time}")
+                print(
+                    f"Even geduld, we starten {OSname} opnieuw op om de gegevens op te slaan!\nVersie: {OSversion}\nTijd: {current_time}")
                 for i in range(2):
                     print("\n")
                 t.sleep(3.25)
@@ -173,9 +203,10 @@ def osIdle():
             elif command in generatePassword:
                 t.sleep(1.25)
                 passwordGen()
-            
+
             elif command in website:
-                site = input("Geef de website in die je wilt bezoeken (vergeet .com enzo niet!): ")
+                site = input(
+                    "Geef de website in die je wilt bezoeken (vergeet .com enzo niet!): ")
                 webbrowser.open(f"https://{site}")
                 command = "//"
                 for i in range(20):
@@ -201,13 +232,13 @@ def osIdle():
                 for i in range(2):
                     print("\n")
                 t.sleep(5)
-
                 with open("updated.txt", "r") as f:
                     lines = f.readlines()
                 if lines[0] != OSversion:
                     restart_loop = True
                     while restart_loop:
-                        restart_sure = input("Ben je zeker dat je wilt updaten?: ")
+                        restart_sure = input(
+                            "Ben je zeker dat je wilt updaten?: ")
                         if restart_sure in ja:
                             for i in range(20):
                                 print("\n")
@@ -219,7 +250,8 @@ def osIdle():
                             current_time = now.strftime("%H:%M:%S")
                             for i in range(20):
                                 print("\n")
-                            print(f"Even geduld, we starten {OSname} opnieuw op\nVersie: {OSversion}\nTijd: {current_time}")
+                            print(
+                                f"Even geduld, we starten {OSname} opnieuw op\nVersie: {OSversion}\nTijd: {current_time}")
                             for i in range(2):
                                 print("\n")
                             t.sleep(3.25)
@@ -244,13 +276,14 @@ def osIdle():
                 else:
                     for i in range(20):
                         print("\n")
-                    print(f"Je hebt al de laatste versie van BobOS!\nVersie: {OSversion}")
+                    print(
+                        f"Je hebt al de laatste versie van BobOS!\nVersie: {OSversion}")
                     for i in range(2):
                         print("\n")
                     t.sleep(3)
 
             else:
-                print("\n\n")
+                print("\nGeen geldig commando!\n")
     except:
         for i in range(20):
             print("\n")
@@ -259,7 +292,7 @@ def osIdle():
             print("\n")
         t.sleep(3)
         os.system(f"python {OSpath}")
-        return 0 
+        return 0
 
 
 def osStart():
@@ -270,14 +303,15 @@ def osStart():
         print("\n")
     t.sleep(3)
     osIdle()
-    
+
 
 def login():
     now = datetime.now()
     current_time = now.strftime("%H:%M:%S")
     for i in range(20):
         print("\n")
-    print(f"Even geduld, we starten {OSname} op...\nVersie: {OSversion}\nTijd: {current_time}")
+    print(
+        f"Even geduld, we starten {OSname} op...\nVersie: {OSversion}\nTijd: {current_time}")
     for i in range(2):
         print("\n")
     t.sleep(5)
@@ -291,7 +325,8 @@ def login():
                 username = input("Wat is je username?: ")
                 usernameAscii = username.encode("ascii")
                 usernameB64 = base64.b64encode(usernameAscii)
-                pw = getpass.getpass(prompt='Wat is je wachtwoord?: ', stream=None)
+                pw = getpass.getpass(
+                    prompt='Wat is je wachtwoord?: ', stream=None)
                 pwAscii = pw.encode("ascii")
                 pwB64 = base64.b64encode(pwAscii)
                 usernamePwB64 = f"{usernameB64}{pwB64}"
@@ -312,13 +347,15 @@ def login():
                                 current_time = now.strftime("%H:%M:%S")
                                 for i in range(20):
                                     print("\n")
-                                print(f"Je hebt teveel keer proberen in te loggen!\nJe moet nu 1 minuut wachten!\nTijd: {current_time}")
+                                print(
+                                    f"Je hebt teveel keer proberen in te loggen!\nJe moet nu 1 minuut wachten!\nTijd: {current_time}")
                                 for i in range(2):
                                     print("\n")
                                 t.sleep(60)
                                 for i in range(20):
                                     print("\n")
-                                print(f"Even geduld, we starten {OSname} opnieuw op\nVersie: {OSversion}\nTijd: {current_time}")
+                                print(
+                                    f"Even geduld, we starten {OSname} opnieuw op\nVersie: {OSversion}\nTijd: {current_time}")
                                 for i in range(2):
                                     print("\n")
                                 t.sleep(3.25)
@@ -329,7 +366,8 @@ def login():
                                 return 0
                             else:
                                 print("\nJe username of wachtwoord is FOUT!")
-                                print("Probeer het opnieuw of registreer opnieuw door opnieuw op te starten!\n")
+                                print(
+                                    "Probeer het opnieuw of registreer opnieuw door opnieuw op te starten!\n")
                                 print(f"Je zit op poging {tries}/3!\n")
                                 t.sleep(1)
                     except:
@@ -345,7 +383,8 @@ def login():
             regUsername = input("Oke, kies een username: ")
             regUsernameBytes = regUsername.encode("ascii")
             regUsernameBase = base64.b64encode(regUsernameBytes)
-            regPw = input(f"Oke, je username is nu {regUsername}. Wat wil je als wachtwoord?: ")
+            regPw = input(
+                f"Oke, je username is nu {regUsername}. Wat wil je als wachtwoord?: ")
             regPwBytes = regPw.encode("ascii")
             regPwBase = base64.b64encode(regPwBytes)
 
@@ -353,13 +392,15 @@ def login():
                 f.write(f"{regUsernameBase}{regPwBase}")
 
             print("\n\n")
-            print(f"Je username is nu {regUsername} en je wachtwoord is nu {regPw}.\n")
+            print(
+                f"Je username is nu {regUsername} en je wachtwoord is nu {regPw}.\n")
             t.sleep(3)
             now = datetime.now()
             current_time = now.strftime("%H:%M:%S")
             for i in range(20):
                 print("\n")
-            print(f"Even geduld, we starten {OSname} opnieuw op om de gegevens op te slaan!\nVersie: {OSversion}\nTijd: {current_time}")
+            print(
+                f"Even geduld, we starten {OSname} opnieuw op om de gegevens op te slaan!\nVersie: {OSversion}\nTijd: {current_time}")
             for i in range(2):
                 print("\n")
             t.sleep(3.25)
@@ -374,7 +415,6 @@ def login():
             t.sleep(3)
             for i in range(20):
                 print("\n")
-
 
 
 if __name__ == "__main__":
