@@ -6,9 +6,11 @@ from datetime import *
 import webbrowser
 from bobPwGenerator import passwordGen
 from bobCalc import *
-from bss import *
+from bobBSS import *
+from bobCasino import *
 
 OSversion = ""
+
 with open("updated.txt", "r") as f:
     lines = f.readlines()
     OSversion = lines[0]
@@ -19,8 +21,7 @@ loginFile = "usernamePwEncrypted.key"
 
 
 nee = ["nee", "neen", "NEE", "NEEN", "n", "N", "Nee", "Neen", "No", "no", "NO"]
-ja = ["ja", "jaa", "JA", "JAA", "jep", "jup", "y", "Y", "j", "Ja",
-      "Jup", "Jep", "yes", "YES", "yess", "Yess", "YESS", "Yes", "J"]
+ja = ["ja", "jaa", "JA", "JAA", "jep", "jup", "y", "Y", "j", "Ja","Jup", "Jep", "yes", "YES", "yess", "Yess", "YESS", "Yes", "J"]
 
 
 def osIdle():
@@ -34,26 +35,29 @@ def osIdle():
         for i in range(20):
             print("\n")
 
-        afsluiten = ["Sluit af", "afsluiten", "Exit", "exit",
-                     "EXIT", "Aflsuiten", "AFSLUITEN", "sluit af", "SLUIT AF"]
-        helpCommand = ["help", "Help", "HELP",
-                       "?", "?h", "?help", "?Help", "?HELP"]
-        time = ["time", "Time", "TIME", "Hoe laat",
-                "hoelaat", "Tijd", "tijd", "TIJD"]
+        afsluiten = ["Sluit af", "afsluiten", "Exit", "exit", "EXIT", "Aflsuiten", "AFSLUITEN", "sluit af", "SLUIT AF"]
+
+        helpCommand = ["help", "Help", "HELP", "?", "?h", "?help", "?Help", "?HELP"]
+
+        time = ["time", "Time", "TIME", "Hoe laat", "hoelaat", "Tijd", "tijd", "TIJD"]
+
         restart = ["restart", "Restart"]
-        changeUserInfo = ["changeUserInfo", "changeuserinfo", "ChangeUserInfo", "CHANGEUSERINFO",
-                          "Verandergegevens", "verandergegevens", "VeranderGegevens", "veranderGegevens", "VERANDERGEGEVENS"]
-        generatePassword = ["generatepassword", "GeneratePassword", "GENERATEPASSWORD", "Maakwachtwoord",
-                            "maakwachtwoord", "MAAKWACHTWOORD", "genpw", "Genpw", "GenPw", "GenPW", "pwgen", "Pwgen", "PWgen", "PWGEN"]
-        website = ["Website", "website", "WEBSITE", "openwebsite", "OpenWebsite", "Openwebsite",
-                   "openWebsite", "OPENWEBSITE", "Openurl", "openurl", "OpenUrl", "OPENURL"]
-        calculate = ["Calculate", "Calc", "calculate", "calc", "CALCULATE", "CALC", "rekenmachine",
-                     "Rekenmachine", "REKENMACHINE", "Bereken", "bereken", "BEREKEN", "reken", "Reken", "REKEN"]
-        commands = [" Exit\n", "Help\n", "Restart\n", "Tijd\n",
-                    "Verandergegevens\n", "Maakwachtwoord\n", "Openurl\n", "Update\n", "Calc"]
+
+        changeUserInfo = ["changeUserInfo", "changeuserinfo", "ChangeUserInfo", "CHANGEUSERINFO", "Verandergegevens", "verandergegevens", "VeranderGegevens", "veranderGegevens", "VERANDERGEGEVENS"]
+
+        generatePassword = ["generatepassword", "GeneratePassword", "GENERATEPASSWORD", "Maakwachtwoord", "maakwachtwoord", "MAAKWACHTWOORD", "genpw", "Genpw", "GenPw", "GenPW", "pwgen", "Pwgen", "PWgen", "PWGEN"]
+
+        website = ["Website", "website", "WEBSITE", "openwebsite", "OpenWebsite", "Openwebsite", "openWebsite", "OPENWEBSITE", "Openurl", "openurl", "OpenUrl", "OPENURL"]
+
+        calculate = ["Calculate", "Calc", "calculate", "calc", "CALCULATE", "CALC", "rekenmachine","Rekenmachine", "REKENMACHINE", "Bereken", "bereken", "BEREKEN", "reken", "Reken", "REKEN"]
+
+        commands = [" Exit\n", "Help\n", "Restart\n", "Tijd\n", "Verandergegevens\n", "Maakwachtwoord\n", "Openurl\n", "Update\n", "Calc"]
+
         update = ["Update", "UPDATE", "update"]
 
         bss = ["bss", "BSS", "bladsteenschaar"]
+
+        casino = ["casino", "CASINO", "blackjack", "bj", "21"]
 
         def OS_help():
             for i in range(20):
@@ -61,8 +65,7 @@ def osIdle():
             print("Hieronder vind u een lijst van alle commando's: \n")
             commandsString = ' '.join(map(str, commands))
             print(commandsString)
-            for i in range(1):
-                print("\n")
+            print("\n")
             t.sleep(1.25)
 
         BobOS_on = True
@@ -81,8 +84,7 @@ def osIdle():
                         current_time = now.strftime("%H:%M:%S")
                         for i in range(20):
                             print("\n")
-                        print(
-                            f"Even geduld, we sluiten {OSname} af...\nVersie: {OSversion}\nTijd: {current_time}")
+                        print(f"Even geduld, we sluiten {OSname} af...\nVersie: {OSversion}\nTijd: {current_time}")
                         for i in range(3):
                             print("\n")
                         t.sleep(3.25)
@@ -112,8 +114,25 @@ def osIdle():
             elif command == "& C:/Users/32474/AppData/Local/Programs/Python/Python39/python.exe c:/Users/32474/OneDrive/Bureaublad/School/Informatica/Python/BobOS/BobOS.py":
                 os.system(f"python {OSpath}")
                 return 0
+
             elif command in helpCommand:
                 OS_help()
+
+            elif command in casino:
+                for i in range(20):
+                    print("\n")
+
+                print("Het spel start op...")
+
+                for i in range(2):
+                    print("\n")
+
+                t.sleep(2)
+                casinoMain()
+                t.sleep(2)
+
+                for i in range(20):
+                    print("\n")
 
             elif command in time:
                 now = datetime.now()
@@ -125,15 +144,23 @@ def osIdle():
                     print("\n")
                 t.sleep(1.25)
 
+            elif command == "":
+                print("\n")
+                continue
+
             elif command in bss:
                 for i in range(20):
                     print("\n")
+
                 print("Het spel start op...")
+
                 for i in range(2):
                     print("\n")
-                    t.sleep(2)
+
+                t.sleep(2)
                 bssMain()
                 t.sleep(2)
+
                 for i in range(20):
                     print("\n")
 
@@ -290,7 +317,7 @@ def osIdle():
         print("FATALE ERROR")
         for i in range(2):
             print("\n")
-        t.sleep(3)
+        t.sleep(1.75)
         os.system(f"python {OSpath}")
         return 0
 

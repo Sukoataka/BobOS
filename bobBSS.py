@@ -32,6 +32,7 @@ def bssMain():
                 print(f"\nAi jammer! Je hebt gelijk gespeeld met de computer, jij koos {userInput} en de computer koos {compInput}!\n")
             else:
                 print(f"\nAi jammer! Je hebt verloren, jij koos {userInput} en de computer koos {compInput}!\n")
+                
             while True:
                 anotherTime = input("Wil je nog een keer spelen? (Y/N): ")
                 t.sleep(1.25)
