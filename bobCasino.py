@@ -96,7 +96,7 @@ def casinoMain():
                     try:
                         while True:
                             print(f"Je hebt {money} euro thuis liggen.")
-                            totalBet = int(input("Hoeveel geld wil je meedoen van Thuis?: "))
+                            totalBet = int(input("Hoeveel geld wil je meedoen van thuis?: "))
 
                             if totalBet > money:
                                 for i in range(3):
